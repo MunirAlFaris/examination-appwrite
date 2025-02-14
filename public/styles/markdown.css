@@ -1,0 +1,112 @@
+:root {
+  --markdown-headings-font-size: 22px;
+  --headings-font-size-step: 2px;
+}
+
+.markdown-body h1 {
+  font-size: calc(var(--markdown-headings-font-size)) !important;
+  margin: 5px 0 !important;
+}
+
+.markdown-body h2 {
+  font-size: calc(var(--markdown-headings-font-size) - var(--headings-font-size-step)) !important;
+  margin: 5px 0 !important;
+}
+
+
+.markdown-body h3 {
+  margin: 5px 0 !important;
+}
+
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  font-size: calc(var(--markdown-headings-font-size) - var(--headings-font-size-step) * 2) !important;
+}
+
+.markdown-body p {
+  font-size: calc(var(--markdown-headings-font-size) - var(--headings-font-size-step) * 3) !important;
+  font-weight: normal;
+}
+
+.markdown-body .team-text p {
+  font-weight: 500;
+}
+
+@media (max-width: 767px) {
+  .markdown-body:not(.messages-container .markdown-body) {
+    font-size: 14px !important;
+  }
+
+
+  .markdown-body h1 {
+    font-size: calc(var(--markdown-headings-font-size) - var(--headings-font-size-step)) !important;
+    margin: 5px 0;
+  }
+  
+  .markdown-body h2 {
+    font-size: calc(var(--markdown-headings-font-size) - var(--headings-font-size-step) * 2) !important;
+  }
+
+  .markdown-body h3 {
+    margin: 3px 0;
+  }
+  
+  .markdown-body h3,
+  .markdown-body h4,
+  .markdown-body h5,
+  .markdown-body h6 {
+    font-size: calc(var(--markdown-headings-font-size) - var(--headings-font-size-step) * 3) !important;
+  }
+
+  .markdown-body p:not(.messages-container .markdown-body p) {
+    font-size: 14px !important;
+  }
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  width: fit-content !important;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0 0 0 15px;
+}
+
+.markdown-body {
+  text-align: initial;
+    max-width: 700px;
+}
+
+.markdown-body table {
+  width: unset !important;
+}
+
+.markdown-body {
+  background-color: transparent !important;
+  display: grid !important;
+}
+
+.markdown-body h1:only-child,
+.markdown-body h2:only-child {
+  border: none !important;
+}
+
+.markdown-body img {
+  max-width: 100%;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body hr {
+  margin: 10px 0;
+  border-width: 2px;
+}
+
+/* .markdown-body tr {
+  background-color: transparent !important;
+} */
