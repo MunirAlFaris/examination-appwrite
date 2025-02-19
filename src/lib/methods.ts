@@ -1,4 +1,6 @@
+import { Query } from "appwrite";
 import { IExam, IUserProfile } from "../../universal/model";
+import { PROFILE_COL_ID } from "../ui_helpers/constants";
 import { account, databases } from "./appwrite";
 
 const dbId = '67aa40db000fc50a5cc1';
@@ -150,5 +152,27 @@ export const getSingleDocument = async (
   } catch (error) {
     console.error('Error fetching document:', error);
     return null
+  }
+}
+
+export async function getUserProfile(
+  userId: string,
+) {
+  try {
+    const response = await databases.listDocuments(
+        dbId,
+        PROFILE_COL_ID,  // Replace with your collection ID
+        [
+          Query.equal('userId', userId),
+          Query.limit(1) // Limit to 1 result
+        ]
+    );
+    return response.documents.length > 0 
+        ? response.documents[0] 
+        : null;
+        
+  } catch (error) {
+      console.error('Appwrite Error:', error);
+      throw error; // Or handle error as needed
   }
 }

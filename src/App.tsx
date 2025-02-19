@@ -21,9 +21,8 @@ import LoginForm from './ui/components/LoginForm';
 // import Posts from './ui/pages/Posts/Posts';
 import Home from './ui/pages/Home/Home';
 import EmptyPageMessage from './ui/components/EmptyPageMessage';
-import { getCurrentUser, getSingleDocument } from './lib/methods';
-import { IUserProfile } from '../universal/model';
-import { PROFILE_COL_ID } from './ui_helpers/constants';
+import { getCurrentUser, getUserProfile } from './lib/methods';
+import { IRecusiveUserProfile } from '../universal/model';
 document.getElementsByTagName('html')[0].setAttribute('dir', "rtl");
 
 // Detect initial theme
@@ -36,13 +35,12 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
 
 function App() {
   const [user, setUser] = useState<Models.User<Models.Preferences> | null>(null);
-  const [profile, setProfile] = useState<IUserProfile | null>(null);
+  const [profile, setProfile] = useState<IRecusiveUserProfile | null>(null);
   const initUser = async () => {
     const user = await getCurrentUser();
     if(user) {
-      const profile = await getSingleDocument(
-        PROFILE_COL_ID,
-        user?.$id
+      const profile = await getUserProfile(
+        user.$id
       )
       setProfile(profile)
     }
@@ -51,6 +49,8 @@ function App() {
   useEffect(() => {
     initUser()
   }, [])
+  console.log(user?.$id)
+  console.log(profile?.userId)
   return (
     <UserContext.Provider
       value={[user, setUser]}
